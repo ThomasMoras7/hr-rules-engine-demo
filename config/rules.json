@@ -1,0 +1,9 @@
+{
+  "baseVacationDays": 25,
+  "seniorityRules": [
+    { "minYears": 10, "additionalDays": 1 },
+    { "minYears": 15, "additionalDays": 2 },
+    { "minYears": 20, "additionalDays": 3 },
+    { "minYears": 25, "additionalDays": 4 }
+  ]
+}
