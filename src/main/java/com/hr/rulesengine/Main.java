@@ -32,17 +32,15 @@ public final class Main {
         }
 
         void computeVacationDays(RulesConfig config) {
-            int bestMinYears = 0;
+            int additionalVacationDays = 0;
             for (RulesConfig.Rule rule : config.rules) {
+                // Verify that all conditions are met
                 boolean conditionsMet = rule.conditions.stream().allMatch(condition -> seniority >= condition.minYears);
                 if (conditionsMet) {
-                    int ruleMinYears = rule.conditions.stream().mapToInt(condition -> condition.minYears).max().orElse(0);
-                    if (ruleMinYears > bestMinYears) {
-                        bestMinYears = ruleMinYears;
-                        vacationDays = config.baseVacationDays + rule.actions.stream().mapToInt(action -> action.additionalDays).sum();
-                    }
+                    additionalVacationDays += rule.actions.stream().mapToInt(action -> action.additionalDays).sum();
                 }
             }
+            vacationDays = config.baseVacationDays + additionalVacationDays;
         }
     }
 
