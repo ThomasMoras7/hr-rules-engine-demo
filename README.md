@@ -20,8 +20,9 @@ Moteur de règles RH Java 21. Calcule les jours de congés à partir d'un solde 
 ## Commandes
 
 ```sh
-mvnw.cmd compile          # compiler
-mvnw.cmd test             # lancer les tests
+mvnw.cmd compile             # compiler
+mvnw.cmd test                # lancer les tests
+mvnw.cmd compile exec:java   # compiler et lancer le programme
 ```
 
 ## Règles actuelles

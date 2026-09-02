@@ -15,14 +15,14 @@ HR Rules Engine is a Java 21 prototype that evaluates HR leave rules, starting w
 ├── docs/                   # Project documentation (this wiki)
 ├── src/
 │   └── main/java/com/hr/rulesengine/
-│       └── Main.java       # Entry point, rule loading and data model (single class)
+│       └── Main.java       # Entry point, Employee entity, rule loading and data model
 └── pom.xml                 # Maven build definition
 ```
 
 ## Design principles
 
 - **Data-driven rules**: business rules are configuration, not code. The engine reads `config/rules.json`.
-- **Prototype simplicity**: all logic lives in a single class, `Main`.
+- **Prototype simplicity**: all code lives in the single file `Main.java` — the entry point, the `Employee` entity and the `RulesConfig` model.
 - **Minimal dependencies**: only Jackson (JSON binding) and JUnit (tests).
 
 ## Build
@@ -30,8 +30,9 @@ HR Rules Engine is a Java 21 prototype that evaluates HR leave rules, starting w
 Maven is not required to be pre-installed: use the wrapper `mvnw.cmd` (Windows) which downloads a local Maven on first run.
 
 ```sh
-mvnw.cmd compile    # compile
-mvnw.cmd test       # run tests
+mvnw.cmd compile             # compile
+mvnw.cmd test                # run tests
+mvnw.cmd compile exec:java   # compile and run the application (main class configured in pom.xml)
 ```
 
 ## The `target/` directory

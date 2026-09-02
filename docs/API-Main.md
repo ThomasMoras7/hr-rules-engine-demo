@@ -4,7 +4,7 @@
 
 ## Overview
 
-Single-class prototype. Contains the application entry point, the rule-loading logic and the data model. It reads `config/rules.json` and deserializes it into `RulesConfig`.
+Single-class prototype. Contains the application entry point, the `Employee` entity, the rule-loading logic and the data model. It reads `config/rules.json` and deserializes it into `RulesConfig`.
 
 ## Data
 
@@ -19,12 +19,13 @@ Single-class prototype. Contains the application entry point, the rule-loading l
 
 | Method | Description |
 | --- | --- |
-| `main(String[] args)` | Reads `config/rules.json` and parses it into `RulesConfig` |
+| `main(String[] args)` | Reads `config/rules.json`, builds an `Employee`, computes and prints its vacation days |
+| `Employee` | Nested entity holding an employee's seniority and computed vacation days |
 | `RulesConfig` | Nested immutable model for the rule set |
 
 ## Flow
 
-On startup `main` reads the file `config/rules.json` and deserializes it into `RulesConfig`. A failure to read or parse the file is reported on standard error and the program exits.
+On startup `main` reads the file `config/rules.json` and deserializes it into `RulesConfig`. It then creates an `Employee` with a fixed seniority (10 years), computes its vacation days from the base allowance plus the seniority bonus, and prints the result. A failure to read or parse the file is reported on standard error and the program exits.
 
 ## Error Handling
 
