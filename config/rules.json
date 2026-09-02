@@ -1,9 +1,29 @@
 {
   "baseVacationDays": 25,
-  "seniorityRules": [
-    { "minYears": 10, "additionalDays": 1 },
-    { "minYears": 15, "additionalDays": 2 },
-    { "minYears": 20, "additionalDays": 3 },
-    { "minYears": 25, "additionalDays": 4 }
+  "rules": [
+    {
+      "id": 1,
+      "label": "Seniority of 10 years",
+      "conditions": [ { "minYears": 10 } ],
+      "actions": [ { "additionalDays": 1 } ]
+    },
+    {
+      "id": 2,
+      "label": "Seniority of 15 years",
+      "conditions": [ { "minYears": 15 } ],
+      "actions": [ { "additionalDays": 2 } ]
+    },
+    {
+      "id": 3,
+      "label": "Seniority of 20 years",
+      "conditions": [ { "minYears": 20 } ],
+      "actions": [ { "additionalDays": 3 } ]
+    },
+    {
+      "id": 4,
+      "label": "Seniority of 25 years",
+      "conditions": [ { "minYears": 25 } ],
+      "actions": [ { "additionalDays": 4 } ]
+    }
   ]
 }
