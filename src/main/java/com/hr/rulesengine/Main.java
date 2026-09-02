@@ -32,21 +32,29 @@ public final class Main {
         }
 
         void computeVacationDays(RulesConfig config) {
-            int maxSeniority = 0;
-            for (RulesConfig.SeniorityRule rule : config.seniorityRules) {
-                if (seniority >= rule.minYears) {
-                    maxSeniority = Math.max(maxSeniority, rule.minYears);
-                    if (maxSeniority == rule.minYears) {
-                        vacationDays = config.baseVacationDays + rule.additionalDays;
+            int bestMinYears = 0;
+            for (RulesConfig.Rule rule : config.rules) {
+                boolean conditionsMet = rule.conditions.stream().allMatch(condition -> seniority >= condition.minYears);
+                if (conditionsMet) {
+                    int ruleMinYears = rule.conditions.stream().mapToInt(condition -> condition.minYears).max().orElse(0);
+                    if (ruleMinYears > bestMinYears) {
+                        bestMinYears = ruleMinYears;
+                        vacationDays = config.baseVacationDays + rule.actions.stream().mapToInt(action -> action.additionalDays).sum();
                     }
                 }
             }
         }
     }
 
-    public record RulesConfig(int baseVacationDays, List<SeniorityRule> seniorityRules) {
+    public record RulesConfig(int baseVacationDays, List<Rule> rules) {
 
-        public record SeniorityRule(int minYears, int additionalDays) {
+        public record Rule(int id, String label, List<Condition> conditions, List<Action> actions) {
+        }
+
+        public record Condition(int minYears) {
+        }
+
+        public record Action(int additionalDays) {
         }
     }
 }
