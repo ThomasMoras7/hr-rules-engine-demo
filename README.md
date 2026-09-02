@@ -1,40 +1,40 @@
 # HR Rules Engine
 
-Moteur de règles RH Java 21. Calcule les jours de congés à partir d'un solde de base plus des jours supplémentaires liés à l'ancienneté. Les règles sont pilotées par la donnée (`config/rules.json`) : modifier un paramètre ne nécessite aucun changement de code.
+Java 21 HR rules engine. Computes vacation days from a base allowance plus seniority-based extras. Rules are data-driven (`config/rules.json`): changing a parameter requires no code change.
 
-## Prérequis
+## Prerequisites
 
-- JDK 21 ou plus récent
-- Aucun : Maven n'a pas besoin d'être installé, le wrapper `mvnw.cmd` s'en charge (téléchargement local au premier lancement).
+- JDK 21 or newer
+- None: Maven does not need to be installed, the `mvnw.cmd` wrapper takes care of it (local download on first run).
 
 ## Structure
 
 ```
-├── config/rules.json          # règles (jours de base + ancienneté)
+├── config/rules.json          # rules (base days + seniority)
 ├── docs/                      # documentation
 ├── src/main/java/com/hr/rulesengine/
-│   └── Main.java              # point d'entrée (toute la logique, proto)
+│   └── Main.java              # entry point (all logic, prototype)
 └── pom.xml
 ```
 
-## Commandes
+## Commands
 
 ```sh
-mvnw.cmd compile             # compiler
-mvnw.cmd test                # lancer les tests
-mvnw.cmd compile exec:java   # compiler et lancer le programme
+mvnw.cmd compile             # compile
+mvnw.cmd test                # run tests
+mvnw.cmd compile exec:java   # compile and run the program
 ```
 
-## Règles actuelles
+## Current rules
 
-- 25 jours de congés de base
-- Ancienneté → jours supplémentaires :
+- 25 base vacation days
+- Seniority → extra days:
 
-| Ancienneté | Jours supplémentaires |
+| Seniority | Extra days |
 | --- | --- |
-| 10 ans | 1 |
-| 15 ans | 2 |
-| 20 ans | 3 |
-| 25 ans | 4 |
+| 10 years | 1 |
+| 15 years | 2 |
+| 20 years | 3 |
+| 25 years | 4 |
 
-La documentation complète se trouve dans [`docs/`](docs/Index.md).
+Full documentation is in [`docs/`](docs/Index.md).
