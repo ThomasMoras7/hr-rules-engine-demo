@@ -4,26 +4,26 @@
     {
       "id": 1,
       "label": "Seniority of 10 years",
-      "conditions": [ { "minYears": 10 } ],
+      "conditions": [ { "variable": "seniority", "operator": ">=", "value": 10 } ],
       "actions": [ { "additionalDays": 1 } ]
     },
     {
       "id": 2,
       "label": "Seniority of 15 years",
-      "conditions": [ { "minYears": 15 } ],
-      "actions": [ { "additionalDays": 1 } ]
+      "conditions": [ { "variable": "seniority", "operator": ">=", "value": 15 } ],
+      "actions": [ { "additionalDays": 2 } ]
     },
     {
       "id": 3,
       "label": "Seniority of 20 years",
-      "conditions": [ { "minYears": 20 } ],
-      "actions": [ { "additionalDays": 1 } ]
+      "conditions": [ { "variable": "seniority", "operator": ">=", "value": 20 } ],
+      "actions": [ { "additionalDays": 3 } ]
     },
     {
       "id": 4,
       "label": "Seniority of 25 years",
-      "conditions": [ { "minYears": 25 } ],
-      "actions": [ { "additionalDays": 1 } ]
+      "conditions": [ { "variable": "seniority", "operator": ">=", "value": 25 } ],
+      "actions": [ { "additionalDays": 4 } ]
     }
   ]
 }

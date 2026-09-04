@@ -34,13 +34,28 @@ public final class Main {
         void computeVacationDays(RulesConfig config) {
             int additionalVacationDays = 0;
             for (RulesConfig.Rule rule : config.rules) {
-                // Verify that all conditions are met
-                boolean conditionsMet = rule.conditions.stream().allMatch(condition -> seniority >= condition.minYears);
+                boolean conditionsMet = rule.conditions.stream().allMatch(this::conditionMet);
                 if (conditionsMet) {
                     additionalVacationDays += rule.actions.stream().mapToInt(action -> action.additionalDays).sum();
                 }
             }
             vacationDays = config.baseVacationDays + additionalVacationDays;
+        }
+
+        boolean conditionMet(RulesConfig.Condition condition) {
+            int actual = switch (condition.variable()) {
+                case "seniority" -> seniority;
+                default -> throw new IllegalArgumentException("Unknown variable: " + condition.variable());
+            };
+            return switch (condition.operator()) {
+                case ">=" -> actual >= condition.value();
+                case ">" -> actual > condition.value();
+                case "<=" -> actual <= condition.value();
+                case "<" -> actual < condition.value();
+                case "==" -> actual == condition.value();
+                case "!=" -> actual != condition.value();
+                default -> throw new IllegalArgumentException("Unknown operator: " + condition.operator());
+            };
         }
     }
 
@@ -49,7 +64,7 @@ public final class Main {
         public record Rule(int id, String label, List<Condition> conditions, List<Action> actions) {
         }
 
-        public record Condition(int minYears) {
+        public record Condition(String variable, String operator, int value) {
         }
 
         public record Action(int additionalDays) {
