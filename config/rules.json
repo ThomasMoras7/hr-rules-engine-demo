@@ -11,19 +11,19 @@
       "id": 2,
       "label": "Seniority of 15 years",
       "conditions": [ { "variable": "seniority", "operator": ">=", "value": 15 } ],
-      "actions": [ { "additionalDays": 2 } ]
+      "actions": [ { "additionalDays": 1 } ]
     },
     {
       "id": 3,
       "label": "Seniority of 20 years",
       "conditions": [ { "variable": "seniority", "operator": ">=", "value": 20 } ],
-      "actions": [ { "additionalDays": 3 } ]
+      "actions": [ { "additionalDays": 1 } ]
     },
     {
       "id": 4,
       "label": "Seniority of 25 years",
       "conditions": [ { "variable": "seniority", "operator": ">=", "value": 25 } ],
-      "actions": [ { "additionalDays": 4 } ]
+      "actions": [ { "additionalDays": 1 } ]
     }
   ]
 }
