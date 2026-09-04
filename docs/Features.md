@@ -4,5 +4,7 @@
 
 - Load HR leave rules from a JSON configuration file (`config/rules.json`).
 - Define a base number of vacation days.
-- Define seniority-based additional vacation days via a granular rule table.
-- Compute the vacation days of an employee from its seniority, printing the result on startup.
+- Model rules as conditions/actions: a rule applies when all its conditions hold, and applies its actions.
+- Test conditions against employee variables (`seniority`) with comparison operators.
+- Cumulate the extra days of every matching rule.
+- Compute and print the vacation days of an employee on startup.

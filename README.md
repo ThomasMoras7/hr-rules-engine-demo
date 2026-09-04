@@ -25,16 +25,29 @@ mvnw.cmd test                # run tests
 mvnw.cmd compile exec:java   # compile and run the program
 ```
 
+## How it works
+
+Rules live in `config/rules.json`. Each rule pairs **conditions** (tests on an employee variable, e.g. `seniority`) with **actions** (extra days granted). A rule applies when all its conditions hold, and the extra days of every matching rule are cumulated onto the base allowance.
+
+```json
+{
+  "id": 1,
+  "label": "Seniority of 10 years",
+  "conditions": [ { "variable": "seniority", "operator": ">=", "value": 10 } ],
+  "actions": [ { "additionalDays": 1 } ]
+}
+```
+
 ## Current rules
 
 - 25 base vacation days
-- Seniority → extra days:
+- Conditions support the `seniority` variable and operators `>=`, `>`, `<=`, `<`, `==`, `!=`.
 
-| Seniority | Extra days |
-| --- | --- |
-| 10 years | 1 |
-| 15 years | 2 |
-| 20 years | 3 |
-| 25 years | 4 |
+| Label | Condition | Extra days |
+| --- | --- | --- |
+| Seniority of 10 years | seniority `>=` 10 | 1 |
+| Seniority of 15 years | seniority `>=` 15 | 1 |
+| Seniority of 20 years | seniority `>=` 20 | 1 |
+| Seniority of 25 years | seniority `>=` 25 | 1 |
 
 Full documentation is in [`docs/`](docs/Index.md).
